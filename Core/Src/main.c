@@ -34,29 +34,12 @@ static uint8_t pc2InitThHardWay( void )
 {
 	/* User will initialize PC2 the hard way. First initialize the peripheral clock, then the mode, and finally the pull-up/down resistor configuration. */
 
-	// Initialize GPIOC Peripheral Clock (0x1 for bit 2 in RCC_AHB1ENR)
-	RCC->AHB1ENR |= (1<<2);
-
-	// Set port Input mode for PC2 (0x00 for bit 5 and 4 in GPIOC_MODER)
-	GPIOC->MODER &= ~(0x00000030);
-
-	// Set port Pull-upfor PC2 (0x01 for bit 5 and 4 in GPIOC_PUPDR)
-	GPIOC->PUPDR |= 0x00000010;
 }
 
 static uint8_t checkPinTheHardWay( void )
 {
 	/* User will fill out this section with a check on PC2. It should return 0 if the pin is low and 1 if the pin is high. */
 
-	// PC3 can be checked by bit shifting a 1 to the correct register and checking the bit status
-	if( ( GPIOC->IDR & ( 1 << 2 ) ) != 0 )
-	{
-		return 0;
-	}
-	else
-	{
-		return 1;
-	}
 }
 
 static void customDelay(uint32_t milliseconds)
@@ -135,12 +118,12 @@ int main(void)
 			if( 0 == strcmpResult )
 			{
 				/* User should transmit the access granted string */
-				HAL_UART_Transmit(&huart1, (uint8_t*)accessGranted, strlen(accessGranted), 10 );
+
 			}
 			else
 			{
 				/* User should transmit the access denied string */
-				HAL_UART_Transmit(&huart1, (uint8_t*)accessDenied, strlen(accessDenied), 10 );
+
 			}
 		}
 		else
@@ -149,12 +132,12 @@ int main(void)
 			if( 0 == strcmpResult )
 			{
 				/* User should transmit the super user access granted string */
-				HAL_UART_Transmit(&huart1, (uint8_t*)superUserAccessGranted, strlen(superUserAccessGranted), 10 );
+
 			}
 			else
 			{
 				/* User should transmit the access denied string */
-				HAL_UART_Transmit(&huart1, (uint8_t*)accessDenied, strlen(accessDenied), 10 );
+
 			}
 		}
 
@@ -223,18 +206,7 @@ void SystemClock_Config(void)
 static void MX_USART1_UART_Init(void)
 {
   /* User must add this section. 115200 8N1 */
-  huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
-  huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
-  huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
-  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
-  {
-    Error_Handler();
-  }
+
 }
 
 /**
