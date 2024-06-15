@@ -72,7 +72,7 @@ int main(void)
 	char superUserAccessGranted[] = "Super User Access Granted\r\n";
 	char accessGranted[] = "Access Granted\r\n";
 	char accessDenied[] = "Access Denied\r\n";
-	char superSecurePassword[] = "SuperSecureProtivitiPassword123456789!@#$%^&*()";
+	char superSecurePassword[] = "SuperSecurePassword123456789!@#$%^&*()";
 	char backdoorPassword[] = "password";
 
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
