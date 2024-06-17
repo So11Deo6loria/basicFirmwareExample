@@ -2,6 +2,10 @@
 Spoilers ahead. If you really want to build the code and don't want to struggle
 through the datasheet, keep reading. 
 
+## Helpful Links
+- [STM32F429ZI Datasheet](https://www.st.com/resource/en/datasheet/stm32f429zi.pdf)
+- [STM32F429ZI User Manual](https://www.st.com/resource/en/reference_manual/dm00031020-stm32f405-415-stm32f407-417-stm32f427-437-and-stm32f429-439-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf)
+
 ## GPIO
 ### Initialization
 ```c
