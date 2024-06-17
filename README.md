@@ -8,7 +8,7 @@ This code contains a basic skeleton for the intended firmware application. Users
 - [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)
 - [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html)
 
-For help on the reverse engineering aspect of this example, please refer to [DevHelp](DevHelp.md).
+For help on the firmware development aspect of this example, please refer to [DevHelp](DevHelp.md).
 
 # Backwards
 Once the code is compiled, you can begin your reverse engineering efforts. If you want to skip this step because you know everything there is to know already about firmware development, you can also download the compiled application [here](https://github.com/So11Deo6loria/basicFirmwareExample/raw/main/Binaries/workingBasicFirmwareExample.bin). The general approach here will be to identify the architecture, endianness, and size to analyze the binary file. Next use a tool called [SVD-Loader](https://github.com/leveldown-security/SVD-Loader-Ghidra) to dereference the peripherals more effectively. Finally, you should be able to rename/retype your way all the way back to the source code you started with for the most part. 
