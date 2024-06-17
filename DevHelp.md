@@ -15,7 +15,10 @@ through the datasheet, keep reading.
 	// Set port Input mode for PC2 (0x00 for bit 5 and 4 in GPIOC_MODER)
 	GPIOC->MODER &= ~(0x00000030);
 
-	// Set port Pull-upfor PC2 (0x01 for bit 5 and 4 in GPIOC_PUPDR)
+	// Reset Pull-Up Value for PC2 (0x00 for bit 5 and 4 in GPIOC_PUPDR)
+	GPIOC->PUPDR &= ~(0x00000030);
+
+	// Set port Pull-up for PC2 (0x01 for bit 5 and 4 in GPIOC_PUPDR)
 	GPIOC->PUPDR |= 0x00000010;
 ```
 ### Checking Pins
