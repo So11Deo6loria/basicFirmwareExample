@@ -2,13 +2,11 @@
 Spoilers ahead. If you really want to build the code and don't want to struggle
 through the datasheet, keep reading. 
 
-## Helpful Links
-- [STM32F429ZI Datasheet](https://www.st.com/resource/en/datasheet/stm32f429zi.pdf)
-- [STM32F429ZI User Manual](https://www.st.com/resource/en/reference_manual/dm00031020-stm32f405-415-stm32f407-417-stm32f427-437-and-stm32f429-439-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf)
-
 ## GPIO
 ### Initialization
 ```c
+static uint8_t pc2InitThHardWay( void )
+{
 	// Initialize GPIOC Peripheral Clock (0x1 for bit 2 in RCC_AHB1ENR)
 	RCC->AHB1ENR |= (1<<2);
 
@@ -20,10 +18,13 @@ through the datasheet, keep reading.
 
 	// Set port Pull-up for PC2 (0x01 for bit 5 and 4 in GPIOC_PUPDR)
 	GPIOC->PUPDR |= 0x00000010;
+}
 ```
 ### Checking Pins
 ```c
-// PC3 can be checked by bit shifting a 1 to the correct register and checking the bit status
+static uint8_t checkPinTheHardWay( void )
+{
+	// PC2 can be checked by bit shifting a 1 to the correct register and checking the bit status
 	if( ( GPIOC->IDR & ( 1 << 2 ) ) != 0 )
 	{
 		return 0;
@@ -32,11 +33,14 @@ through the datasheet, keep reading.
 	{
 		return 1;
 	}
+}
 ```
 
 ## UART
 ### Initialize
 ```c
+static void MX_USART1_UART_Init(void)
+{
   huart1.Instance = USART1;
   huart1.Init.BaudRate = 115200;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
@@ -49,18 +53,19 @@ through the datasheet, keep reading.
   {
     Error_Handler();
   }
+}
 ```
 ### Writing Data
 ```c
-/* User should transmit the access granted string */
+/* Transmit the access granted string */
 HAL_UART_Transmit(&huart1, (uint8_t*)accessGranted, strlen(accessGranted), 10 );
 
-/* User should transmit the access denied string */
+/* Transmit the access denied string */
 HAL_UART_Transmit(&huart1, (uint8_t*)accessDenied, strlen(accessDenied), 10 );
 
-/* User should transmit the super user access granted string */
+/* Transmit the super user access granted string */
 HAL_UART_Transmit(&huart1, (uint8_t*)superUserAccessGranted, strlen(superUserAccessGranted), 10 );
 
-/* User should transmit the access denied string */
+/* Transmit the access denied string */
 HAL_UART_Transmit(&huart1, (uint8_t*)accessDenied, strlen(accessDenied), 10 );
 ```

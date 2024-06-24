@@ -32,13 +32,20 @@ static char __rxBuffer[256]; // Shout out to Drew W. for silly requirements on t
 
 static uint8_t pc2InitThHardWay( void )
 {
-	/* User will initialize PC2 the hard way. First initialize the peripheral clock, then the mode, and finally the pull-up/down resistor configuration. */
+	/* TODO: User will initialize PC2 the hard way.
+	 * Step 1: Initialize the peripheral clock
+	 * Step 2: Set GPIO Input mode for PC2
+	 * Step 3: Configure PC2 as a Pull-Up pin
+	 */
 
 }
 
 static uint8_t checkPinTheHardWay( void )
 {
-	/* User will fill out this section with a check on PC2. It should return 0 if the pin is low and 1 if the pin is high. */
+	/* TODO: User will fill out this section with a check on PC2.
+	 * Step 1: Check the value of the PC2 input data register
+	 * Step 2: Return 0 if the pin is low and 1 if the pin is high
+	 */
 
 }
 
@@ -86,7 +93,7 @@ int main(void)
 
 	for(;;)
 	{
-		HAL_UART_Transmit( &huart1, (uint8_t*)__prompt, sizeof(__prompt)-1, 100 );
+		HAL_UART_Transmit( &huart1, (uint8_t*)__prompt, strlen(__prompt), 100 );
 		waitingForMessage = 1;
 		while( waitingForMessage )
 		{
@@ -117,12 +124,12 @@ int main(void)
 			strcmpResult = strncmp( __rxBuffer, superSecurePassword, sizeof(superSecurePassword) );
 			if( 0 == strcmpResult )
 			{
-				/* User should transmit the access granted string */
+				/* TODO: User should leverage the HAL transmit function to send the accessGranted string */
 
 			}
 			else
 			{
-				/* User should transmit the access denied string */
+				/* TODO: User should leverage the HAL transmit function to send the accessDenied string */
 
 			}
 		}
@@ -131,12 +138,12 @@ int main(void)
 			strcmpResult = strncmp( __rxBuffer, backdoorPassword, sizeof(backdoorPassword) );
 			if( 0 == strcmpResult )
 			{
-				/* User should transmit the super user access granted string */
+				/* TODO: User should leverage the HAL transmit function to send the superUserAccessGranted string */
 
 			}
 			else
 			{
-				/* User should transmit the access denied string */
+				/* TODO: User should leverage the HAL transmit function to send the accessDenied string */
 
 			}
 		}
@@ -205,7 +212,13 @@ void SystemClock_Config(void)
   */
 static void MX_USART1_UART_Init(void)
 {
-  /* User must add this section. 115200 8N1 */
+  /* TODO: User must initialize USART1 with the following configurations:
+   *   Baud Rate: 11500
+   *   Word Length: 8
+   *   Stop Bits: 1
+   *   Parity: None
+   *   Hardware Flow Control: None
+   */
 
 }
 
