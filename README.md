@@ -3,15 +3,16 @@ Developing firmware is an essential skill that cyber security professionals shou
 
 This workshop aims to demonstrate firmware in two-parts forwards and backwards. We will briefly review firmware, development, tools, and even generate a basic application intended for the STM32F429ZI-DISCOVERY board. The second part of this workshop will demonstrate how the firmware we develop here can be reversed to discover critical functionality with a simple binary file. 
 
-##Pre-requisites/Downloads
+## Pre-Requisites
 - [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html)
+- [Ghidra](https://github.com/NationalSecurityAgency/ghidra/releases)
+## Reference Materials
 - [STM32F429ZI Datasheet](https://www.st.com/resource/en/datasheet/stm32f429zi.pdf)
 - [STM32F429ZI User Manual](https://www.st.com/resource/en/reference_manual/dm00031020-stm32f405-415-stm32f407-417-stm32f427-437-and-stm32f429-439-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf)
 
 # Forwards
 This code contains a basic skeleton for the intended firmware application. Users will need to develop the initialization code as well as a few function calls both the easy way (HAL drivers) and the hard way (bit shifting / mapping). We hope this demonstrates the benefit of fully understanding low-level firmware in reverse engineering efforts. We are happy to help in any way explain the firmware development process in greater detail throughout the workshop. If you'd also like to develop the BSP layer from scratch yourself you can start with the following tool: 
 - [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)
-
 
 For help on the firmware development aspect of this example, please refer to [DevHelp](DevHelp.md).
 
